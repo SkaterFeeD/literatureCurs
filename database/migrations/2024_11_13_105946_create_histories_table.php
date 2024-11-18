@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('content');
             $table->integer('read_time');
             $table->boolean('confirmation');
-            $table->string('name');
+            $table->string('name', 64);
             $table->text('description');
             $table->string('photo');
             $table->timestamps();
