@@ -9,7 +9,9 @@ class Role extends Model
 {
     protected $fillable = ['name', 'code'];
 
-    public function users() {
+    // Связь с моделью User 1:M
+
+    public function user() {
         return $this->hasMany(User::class);
     }
 }

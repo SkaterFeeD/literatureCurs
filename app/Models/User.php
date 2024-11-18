@@ -29,21 +29,11 @@ class User extends Authenticatable
         'token',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
@@ -52,7 +42,23 @@ class User extends Authenticatable
         ];
     }
 
+    // Связь с моделью Role M:1
     public function role() {
         return $this->belongsTo(Role::class);
+    }
+
+    // Связь с моделью Grade 1:M
+    public function grade() {
+        return $this->HasMany(Grade::class);
+    }
+
+    // Связь с моделью ReadStatus 1:M
+    public function readstatus() {
+        return $this->HasMany(ReadStatus::class);
+    }
+
+    // Связь с моделью userhistory 1:M
+    public function userhistory() {
+        return $this->HasMany(UserHistory::class);
     }
 }

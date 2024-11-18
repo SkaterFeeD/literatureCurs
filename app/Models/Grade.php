@@ -9,10 +9,13 @@ class Grade extends Model
 {
     protected $fillable = ['comment', 'grade', 'user_id', 'history_id'];
 
-    public function users() {
+
+    // Связь с моделью User M:1
+    public function user() {
         return $this->belongsTo(User::class);
     }
-    public function histories() {
+    // Связь с моделью History M:1
+    public function history() {
         return $this->belongsTo(History::class);
     }
 }
