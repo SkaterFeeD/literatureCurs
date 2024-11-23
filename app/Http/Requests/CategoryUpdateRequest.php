@@ -11,7 +11,7 @@ class CategoryUpdateRequest extends ApiRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class CategoryUpdateRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'string|min:4|max:64',
+            'code' => 'string|min:4|max:64',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.min' => 'Поле "Код" должно содержать не менее :min символов.',
+            'code.min' => 'Поле "Код" должно содержать не менее :min символов.',
+            'name.max' => 'Поле "Код" должно содержать не более :max символов.',
+            'code.max' => 'Поле "Код" должно содержать не более :max символов.',
         ];
     }
 }

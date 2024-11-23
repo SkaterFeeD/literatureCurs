@@ -22,7 +22,21 @@ class HistoryUpdateRequest extends ApiRequest
     public function rules(): array
     {
         return [
+            'content' => 'text',
+            'read_time' => 'integer',
+            'confirmation' => 'boolean',
+            'name' => 'string|min:1|max:64',
+            'description' => 'text',
+            'photo' => 'string|max:255',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.max' => 'Поле "Название" должно содержать не более :max символов.',
+            'name.min' => 'Поле "Название" должно содержать не менее :min символов.',
 
+            'photo.max' => 'Поле "Фото" должно содержать не более :max символов.',
         ];
     }
 }

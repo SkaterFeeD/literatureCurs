@@ -11,7 +11,7 @@ class CategoryCreateRequest extends ApiRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,20 @@ class CategoryCreateRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|min:1|max:64',
+            'code' => 'required|string|min:1|max:64',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Поле "Название" обязательно для заполнения.',
+            'code.required' => 'Поле "Код" обязательно для заполнения.',
+            'name.min' => 'Поле "Код" должно содержать не менее :min символов.',
+            'code.min' => 'Поле "Код" должно содержать не менее :min символов.',
+            'name.max' => 'Поле "Код" должно содержать не более :max символов.',
+            'code.max' => 'Поле "Код" должно содержать не более :max символов.',
         ];
     }
 }

@@ -22,6 +22,15 @@ class ReadStatusUpdateRequest extends ApiRequest
     public function rules(): array
     {
         return [
+            'status' => 'boolean',
+            'user_id' => 'integer|exists:users,id',
+            'history_id' => 'integer|exists:histories,id',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
 
         ];
     }
